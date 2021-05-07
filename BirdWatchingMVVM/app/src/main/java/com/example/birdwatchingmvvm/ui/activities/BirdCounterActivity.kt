@@ -1,13 +1,15 @@
-package com.example.birdwatchingmvvm
+package com.example.birdwatchingmvvm.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.birdwatchingmvvm.R
 import com.example.birdwatchingmvvm.databinding.ActivityBirdCounterBinding
+import com.example.birdwatchingmvvm.ui.viewmodels.BirdCounterViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BirdCounterActivity : AppCompatActivity() {
 
-    private val birdCounter = BirdCounter()
-    private val viewModel = BirdCounterViewModel(birdCounter)
+    private val viewModel by viewModel<BirdCounterViewModel>()
     private lateinit var binding: ActivityBirdCounterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,19 +17,19 @@ class BirdCounterActivity : AppCompatActivity() {
         binding = ActivityBirdCounterBinding.inflate(layoutInflater).also {
             it.buttonBlue.setOnClickListener {
                 viewModel.seeBird()
-                viewModel.changeBackground(R.color.blue)
+                //viewModel.changeBackground(R.color.blue)
             }
             it.buttonYellow.setOnClickListener {
                 viewModel.seeBird()
-                viewModel.changeBackground(R.color.yellow)
+                //viewModel.changeBackground(R.color.yellow)
             }
             it.buttonGreen.setOnClickListener {
                 viewModel.seeBird()
-                viewModel.changeBackground(R.color.green)
+                //viewModel.changeBackground(R.color.green)
             }
             it.buttonRed.setOnClickListener {
                 viewModel.seeBird()
-                viewModel.changeBackground(R.color.red)
+                //viewModel.changeBackground(R.color.red)
             }
             it.buttonReset.setOnClickListener {
                 viewModel.reset()
@@ -36,11 +38,5 @@ class BirdCounterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel.birdsSeen.observe(this, {binding.tvBirdCount.text = it.toString()})
-        viewModel.backgroundColor.observe(
-            this, { viewModel.backgroundColor.value?.let { color ->
-                binding.tvBirdCount.setBackgroundResource(
-                    color
-                )
-            } })
     }
 }

@@ -1,4 +1,4 @@
-package com.example.birdwatchingmvvm
+package com.example.birdwatchingmvvm.model
 
 class BirdCounter {
     var birdsSeen: Int = 0

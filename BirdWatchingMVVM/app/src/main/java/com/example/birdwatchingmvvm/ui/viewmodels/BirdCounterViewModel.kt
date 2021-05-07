@@ -1,8 +1,10 @@
-package com.example.birdwatchingmvvm
+package com.example.birdwatchingmvvm.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.birdwatchingmvvm.R
+import com.example.birdwatchingmvvm.model.BirdCounter
 
 class BirdCounterViewModel(private val birdCounter: BirdCounter): ViewModel() {
 
