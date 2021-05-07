@@ -24,8 +24,8 @@ class BirdCounterViewModel(private val birdCounter: BirdCounter): ViewModel() {
         _backgroundColor.postValue(birdCounter.backgroundColor)
     }
 
-    fun reset() {
-        birdCounter.changeBackground(R.color.white)
-        _birdsSeen.postValue(0)
+    fun resetCounter() {
+        birdCounter.resetCounter()
+        _birdsSeen.postValue(birdCounter.birdsSeen)
     }
 }

@@ -7,5 +7,10 @@ class BirdCounter {
         private set
 
     fun seeBird() = birdsSeen++
-    fun changeBackground(color: Int) {}
+    fun changeBackground(color: Int) {
+        backgroundColor = color
+    }
+    fun resetCounter() {
+        birdsSeen = 0
+    }
 }

@@ -17,26 +17,30 @@ class BirdCounterActivity : AppCompatActivity() {
         binding = ActivityBirdCounterBinding.inflate(layoutInflater).also {
             it.buttonBlue.setOnClickListener {
                 viewModel.seeBird()
-                //viewModel.changeBackground(R.color.blue)
+                viewModel.changeBackground(R.color.blue)
             }
             it.buttonYellow.setOnClickListener {
                 viewModel.seeBird()
-                //viewModel.changeBackground(R.color.yellow)
+                viewModel.changeBackground(R.color.yellow)
             }
             it.buttonGreen.setOnClickListener {
                 viewModel.seeBird()
-                //viewModel.changeBackground(R.color.green)
+                viewModel.changeBackground(R.color.green)
             }
             it.buttonRed.setOnClickListener {
                 viewModel.seeBird()
-                //viewModel.changeBackground(R.color.red)
+                viewModel.changeBackground(R.color.red)
             }
             it.buttonReset.setOnClickListener {
-                viewModel.reset()
+                viewModel.resetCounter()
+                viewModel.changeBackground(R.color.white)
             }
         }
         setContentView(binding.root)
 
         viewModel.birdsSeen.observe(this, {binding.tvBirdCount.text = it.toString()})
+        viewModel.backgroundColor.observe(
+                this, { viewModel.backgroundColor.value?.let {
+                                color -> binding.tvBirdCount.setBackgroundResource(color) } })
     }
 }
